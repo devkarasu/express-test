@@ -28,3 +28,14 @@ var photoList = [
 app.get("/api/photo/list", function(req, res, next){
   res.json(photoList);
 });
+
+// 選択した写真のデータを取得するAPI
+app.get("/api/photo/:photoId", function(req, res, next){
+  var photo;
+  for(i = 0; i < photoList; i++){
+    if(photoList[i].id == req.params.photoId){
+      var photo = photoList[i];
+    }
+  }
+  res.json(photo);
+});
